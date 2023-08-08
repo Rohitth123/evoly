@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Keyword Search Volume</title>
+</head>
+<body>
+    <h1>Keyword Search Volume Checker</h1>
+    <input type="text" id="keywordInput" placeholder="Enter a keyword">
+    <button onclick="getSearchVolume()">Search</button>
+    <div id="searchVolumeResult"></div>
+
+    <script>
+       getSearchVolume() {
+            const keyword = document.getElementById("keywordInput").value;
+            const response = await fetch(`/get_search_volume?keyword=${keyword}`);
+            const data = await response.json();
+            document.getElementById("searchVolumeResult").innerText = `Search volume: ${data.searchVolume}`;
+        }
+    </script>
+</body>
+</html>
